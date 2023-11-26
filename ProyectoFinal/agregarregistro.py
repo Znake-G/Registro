@@ -14,8 +14,8 @@ def esta_autenticado():
 @app.route('/')
 def inicio():
     if esta_autenticado():
-        return render_template('index.html', usuario=session['usuario'])
-    return render_template('login.html')
+        return render_template('index1.html', usuario=session['usuario'])
+    return render_template('index.html')
 
 # Ruta para iniciar sesión
 @app.route('/login', methods=['POST'])
@@ -48,7 +48,7 @@ def registrar_usuario():
         usuarios[nuevo_usuario] = nueva_contrasena
         return 'Usuario registrado con éxito'
 
-    return render_template('registrar.html')
+    return render_template('index.html')
 
 if _name_ == '_main_':
     app.run(debug=True)

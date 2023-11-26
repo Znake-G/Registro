@@ -1,13 +1,12 @@
 const container = document.getElementById('container');
-const registerBtn = document.getElementById('register');
-const loginBtn = document.getElementById('login');
+const signInBtn = document.getElementById('sign-in');
+const signUpBtn = document.getElementById('sign-up');
 
-registerBtn.addEventListener('click', () => {
+signUpBtn.addEventListener('click', () => {
     container.classList.add("active");
 });
 
-loginBtn.addEventListener('click', () => {
+signInBtn.addEventListener('click', () => {
     container.classList.remove("active");
-    window.location.href = 'index1.html'
+    window.location.href = 'index.html';
 });
-
