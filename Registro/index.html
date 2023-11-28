@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Taskmaster Login Page | ZnakeG</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
+    <py -script src="Function.py"></py-script>
 </head>
 
 <body>
-
+    <section class="pyscript">
+        
+        <py-script sr="Function.py"></py-script>
+  
     <div class="container" id="container">
         <div class="form-container sign-up">
             <form>
@@ -25,24 +31,11 @@
                 <input type="text" id= "Name" placeholder="Name">
                 <input type="email" id = "correo" placeholder="Email">
                 <input type="password" id= "Pass" placeholder="Password">
-                <button onclick="register()">Sign Up</button>
-                <script lang='text/javaScript'>
-                    function register(){
-                        var email = document.getElementById("correo").value;
-                        var pass = document.getElementById("Pass").value;
-                        var name = document.getElementById("Name").value;
-                        if (email == "" || pass == "" || name == ""){
-                            alert("Faltan datos");
-                        }
-                        BuscarUserSinPass(name, email, pass);
-                    }
-                    function BuscarUserSinPass(Name, email, pass){
-                        alert("Buscando usuario ");
-                        confir = False;
-                        alert("Buscando usuario ");
-                        /* Validar que el usuario este en la base de datos confir = True si se encuentra el usuario */
-                    }
-                </script>
+                
+                <!--Obtener los valores por su ID--> 
+
+                <button onclick="register(document.getElementById('Name').value,document.getElementById('correo').value,document.getElementById('Pass').value)">Sign Up</button>
+                
             </form>
         </div>
         <div class="form-container sign-in">
@@ -63,31 +56,7 @@
                 <input type="email"  id= "email" placeholder="Email">
                 <input type="password" id = "Password" placeholder="Password">
                 <a href="#">Forget Your Password?</a>
-                <button onclick="Validar()">Sign In</button>
-                <script lang='text/javaScript'>
-                    function Validar(){
-                        var email = document.getElementById("email").value;
-                        var pass = document.getElementById("Password").value;
-                        var gerente = document.getElementById("Gerente").checked;
-                        var supervisor = document.getElementById("Supervisor").checked;
-                        if (email == "" || pass == "" || (gerente == false && supervisor == false)){
-                            alert("Faltan datos");
-                        }else{
-                            if (gerente == true){
-                                comprobarBD("Gerente",email,pass);
-                                alert("Validando Gerente")
-                            }
-                            if (supervisor == true){
-                                comprobarBD("Supervisor",email,pass);
-                                alert("Validando Supervisor")
-                            }
-                        }
-                    }
-                    function comprobarBD(Cargo, email, pass){
-                        confir = False;
-                        /* Validar que el usuario este en la base de datos confir = True si se encuentra el usuario */
-                    }
-                </script>
+                <button onclick="Validar()">Sign In</button>         
             </form>
         </div>
         <div class="toggle-container">
