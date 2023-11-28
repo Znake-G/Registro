@@ -22,10 +22,27 @@
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email for registeration</span>
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button>Sign Up</button>
+                <input type="text" id= "Name" placeholder="Name">
+                <input type="email" id = "correo" placeholder="Email">
+                <input type="password" id= "Pass" placeholder="Password">
+                <button onclick="register()">Sign Up</button>
+                <script lang='text/javaScript'>
+                    function register(){
+                        var email = document.getElementById("correo").value;
+                        var pass = document.getElementById("Pass").value;
+                        var name = document.getElementById("Name").value;
+                        if (email == "" || pass == "" || name == ""){
+                            alert("Faltan datos");
+                        }
+                        BuscarUserSinPass(name, email, pass);
+                    }
+                    function BuscarUserSinPass(Name, email, pass){
+                        alert("Buscando usuario ");
+                        confir = False;
+                        alert("Buscando usuario ");
+                        /* Validar que el usuario este en la base de datos confir = True si se encuentra el usuario */
+                    }
+                </script>
             </form>
         </div>
         <div class="form-container sign-in">
@@ -40,13 +57,37 @@
                 <span>or use your email password</span>
                 <p>Tipo de usuario</p>
                 <div class="Usuario">
-                    <p><input type = "radio" name="Usuario" value= "Gerente"></input>Gerente</p>
-                    <p><input type = "radio" name="Usuario" value= "Supervisor"></input>Supervisor</p> 
+                    <input type = "radio" name="Usuario" id= "Gerente" >Gerente
+                    <input type = "radio" name="Usuario" id= "Supervisor" >Supervisor
                 </div>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <input type="email"  id= "email" placeholder="Email">
+                <input type="password" id = "Password" placeholder="Password">
                 <a href="#">Forget Your Password?</a>
-                <button>Sign In</button>
+                <button onclick="Validar()">Sign In</button>
+                <script lang='text/javaScript'>
+                    function Validar(){
+                        var email = document.getElementById("email").value;
+                        var pass = document.getElementById("Password").value;
+                        var gerente = document.getElementById("Gerente").checked;
+                        var supervisor = document.getElementById("Supervisor").checked;
+                        if (email == "" || pass == "" || (gerente == false && supervisor == false)){
+                            alert("Faltan datos");
+                        }else{
+                            if (gerente == true){
+                                comprobarBD("Gerente",email,pass);
+                                alert("Validando Gerente")
+                            }
+                            if (supervisor == true){
+                                comprobarBD("Supervisor",email,pass);
+                                alert("Validando Supervisor")
+                            }
+                        }
+                    }
+                    function comprobarBD(Cargo, email, pass){
+                        confir = False;
+                        /* Validar que el usuario este en la base de datos confir = True si se encuentra el usuario */
+                    }
+                </script>
             </form>
         </div>
         <div class="toggle-container">
